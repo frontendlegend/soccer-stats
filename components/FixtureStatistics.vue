@@ -1,5 +1,5 @@
 <template>
-  <div class="fixture-stats">
+  <div class="fixture-stats" v-if="fixtureStatistics?.length">
     <h4 class="fixture-stats__title">Statistics</h4>
 
     <div class="fixture-stats__sides">

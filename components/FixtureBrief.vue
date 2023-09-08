@@ -53,10 +53,12 @@
 <style scoped lang="scss">
   .fixture-brief {
     &__score {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr .2fr 1fr;
       justify-content: center;
       align-items: center;
       gap: 32px;
+      text-align: center;
       font-size: 24px;
 
       &__team {

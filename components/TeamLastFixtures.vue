@@ -116,6 +116,8 @@
         }
         &__image {
           width: 64px;
+          height: 64px;
+          object-fit: contain;
         }
         &__score {
           margin: 8px 0 0;

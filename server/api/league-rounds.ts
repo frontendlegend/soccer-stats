@@ -6,10 +6,13 @@ export default defineEventHandler(async (event) => {
 
   // TODO: api base url and api secret env
   const leagueRounds = await $fetch<ResponseWrapperT<LeagueRoundsT>>(
-    process.env.API_BASE_URL + '/fixtures/rounds', 
+    (process.env.API_BASE_URL ?? event.context.env.API_BASE_URL) + '/fixtures/rounds', 
     { 
-      headers: { 'x-apisports-key': process.env.X_APISPORTS_KEY ?? '' },
-      params: { league: query.leagueId, season: query.season, current: query.current }
+      params: { league: query.leagueId, season: query.season, current: query.current },
+      headers: { 
+        'x-apisports-key': 
+          (process.env.X_APISPORTS_KEY ?? event.context.env.X_APISPORTS_KEY) ?? '' 
+      }
     }
   )
     .then(res => res.response)

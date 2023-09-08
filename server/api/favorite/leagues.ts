@@ -14,10 +14,13 @@ export default defineEventHandler(async (event) => {
 
   for (let i = 0; i < favoriteLeaguesIds.split(',').length; i++) {
     await $fetch<ResponseWrapperT<LeaguesT>>(
-      process.env.API_BASE_URL + '/leagues', 
+      (process.env.API_BASE_URL ?? event.context.env.API_BASE_URL) + '/leagues', 
       { 
         params: { id: favoriteLeaguesIds.split(',')[i] },
-        headers: { 'x-apisports-key': process.env.X_APISPORTS_KEY ?? '' }
+        headers: { 
+          'x-apisports-key': 
+            (process.env.X_APISPORTS_KEY ?? event.context.env.X_APISPORTS_KEY) ?? '' 
+        }
       }
     )
       .then(res => favoriteLeagues.push(res.response[0]))

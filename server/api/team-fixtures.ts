@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
 
   // TODO: api base url and api secret env
   const teamFixtures = await $fetch<ResponseWrapperT<FixturesT>>(
-    process.env.API_BASE_URL + '/fixtures',
+    (process.env.API_BASE_URL ?? event.context.env.API_BASE_URL) + '/fixtures',
     {
       params: { 
         league: query.league, 
@@ -14,7 +14,10 @@ export default defineEventHandler(async (event) => {
         team: query.team,
         last: query.last 
       },
-      headers: { 'x-apisports-key': process.env.X_APISPORTS_KEY ?? '' }
+      headers: { 
+        'x-apisports-key': 
+          (process.env.X_APISPORTS_KEY ?? event.context.env.X_APISPORTS_KEY) ?? '' 
+      }
     }
   )
     .then(res => res.response)

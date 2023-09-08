@@ -6,10 +6,10 @@ export default defineEventHandler(async (event) => {
 
   // TODO: api base url and api secret env
   const fixtureStats = await $fetch<ResponseWrapperT<FixtureStatisticsT>>(
-    'https://v3.football.api-sports.io' + '/fixtures/statistics',
+    process.env.API_BASE_URL + '/fixtures/statistics',
     {
       params: { fixture: query.fixture },
-      headers: { 'x-apisports-key': 'abc8fdd1fc3a728891db00efeed4ae1a' }
+      headers: { 'x-apisports-key': process.env.X_APISPORTS_KEY ?? '' }
     }
   )
     .then(res => res.response)

@@ -13,16 +13,11 @@ export default defineEventHandler(async (event) => {
   const favoriteLeagues: LeaguesT = []
 
   for (let i = 0; i < favoriteLeaguesIds.split(',').length; i++) {
-    await $fetch<ResponseWrapperT<LeaguesT>>(
-      (process.env.API_BASE_URL ?? event.context.env.API_BASE_URL) + '/leagues', 
-      { 
-        params: { id: favoriteLeaguesIds.split(',')[i] },
-        headers: { 
-          'x-apisports-key': 
-            (process.env.X_APISPORTS_KEY ?? event.context.env.X_APISPORTS_KEY) ?? '' 
-        }
-      }
-    )
+    await soccerApi<ResponseWrapperT<LeaguesT>>({
+      prodEnv: event.context.env,
+      path: '/leagues',
+      params: { id: favoriteLeaguesIds.split(',')[i] }
+    })
       .then(res => favoriteLeagues.push(res.response[0]))
       .catch(err => console.error({ err }))
   }

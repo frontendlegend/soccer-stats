@@ -4,17 +4,11 @@ import { FixtureEventsT } from "~/types/fixture-events"
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)
 
-  // TODO: api base url and api secret env
-  const fixtureEvents = await $fetch<ResponseWrapperT<FixtureEventsT>>(
-    (process.env.API_BASE_URL ?? event.context.env.API_BASE_URL) + '/fixtures/events',
-    {
-      params: { fixture: query.fixture },
-      headers: { 
-        'x-apisports-key': 
-          (process.env.X_APISPORTS_KEY ?? event.context.env.X_APISPORTS_KEY) ?? '' 
-      }
-    }
-  )
+  const fixtureEvents = await soccerApi<ResponseWrapperT<FixtureEventsT>>({
+    prodEnv: event.context.env,
+    path: '/fixtures/events',
+    params: { fixture: query.fixture }
+  })
     .then(res => res.response)
     .catch(err => console.error({ err }))
   

@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout>
     <div class="fixture-page">
-      <FavoriteLeagues />
+      <CommonFavoriteLeagues />
 
       <FixtureBrief :fixture="fixture" />
       <FixtureLineups :fixture="fixture" />
@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-  import { FixtureT } from '~/types/fixtures';
+  import { FixtureT } from '~/types/fixture';
 
   const route = useRoute()
 

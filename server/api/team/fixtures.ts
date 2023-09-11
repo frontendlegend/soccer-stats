@@ -1,5 +1,5 @@
 import { ResponseWrapperT } from "~/types/api"
-import { FixturesT } from "~/types/fixtures"
+import { FixturesT } from "~/types/fixture"
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)

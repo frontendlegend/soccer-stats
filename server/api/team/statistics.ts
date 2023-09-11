@@ -1,5 +1,5 @@
 import { ResponseWrapperT } from "~/types/api"
-import { TeamStatisticsT } from "~/types/team-statistics"
+import { TeamStatisticsT } from "~/types/team/statistics"
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)

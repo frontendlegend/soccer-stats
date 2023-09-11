@@ -1,5 +1,5 @@
 import { ResponseWrapperT } from "~/types/api"
-import { TeamsSquadT } from "~/types/team-squad"
+import { TeamsSquadT } from "~/types/team/squad"
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)

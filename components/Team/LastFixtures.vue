@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-  import { FixtureT, FixturesT } from '~/types/fixtures';
+  import { FixtureT, FixturesT } from '~/types/fixture';
 
   const props = defineProps<{
     leagueId: number
@@ -45,7 +45,7 @@
   }>()
 
   const { data: lastFixtures } = await useFetch<FixturesT>(
-    '/api/team-fixtures', {
+    '/api/team/fixtures', {
       params: {
         league: props.leagueId,
         season: props.season,
@@ -73,7 +73,7 @@
   }
 
   const goToTeam = (id: number): void => {
-    
+    //
   }
 </script>
 

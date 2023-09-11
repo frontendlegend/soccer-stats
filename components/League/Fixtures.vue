@@ -77,10 +77,10 @@
     season: number | undefined 
   }>()
 
-  const { data: leagueRounds } = await useFetch('/api/league-rounds', {
+  const { data: leagueRounds } = await useFetch('/api/league/rounds', {
     params: { leagueId: props.leagueId, season: props.season }
   })
-  const { data: leagueRoundsCurrent } = await useFetch('/api/league-rounds', {
+  const { data: leagueRoundsCurrent } = await useFetch('/api/league/rounds', {
     params: { leagueId: props.leagueId, season: props.season, current: true }
   })
 
@@ -89,7 +89,7 @@
   const { data: leagueFixtures } = 
     await useAsyncData(
       'league-fixtures',
-      () => $fetch('/api/league-fixtures', { params: { 
+      () => $fetch('/api/league/fixtures', { params: { 
         leagueId: props.leagueId, 
         season: props.season, 
         round: selectedRound.value 

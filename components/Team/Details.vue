@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-  import { LeagueT } from '~/types/leagues';
+  import { LeagueT } from '~/types/league';
   import { TeamT } from '~/types/team';
 
   const props = defineProps<{ 

@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-  import { FixtureT } from '~/types/fixtures';
+  import { FixtureT } from '~/types/fixture';
 
   const props = defineProps<{ fixture: FixtureT | null }>()
 </script>

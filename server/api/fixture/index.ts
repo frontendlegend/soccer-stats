@@ -1,16 +1,16 @@
 import { ResponseWrapperT } from "~/types/api"
-import { LeagueT } from "~/types/leagues"
+import { FixtureT } from "~/types/fixture"
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)
 
-  const league = await soccerApi<ResponseWrapperT<[LeagueT]>>({
+  const fixture = await soccerApi<ResponseWrapperT<[FixtureT]>>({
     prodEnv: event.context.env, 
-    path: '/leagues', 
-    params: { id: query.id },
+    path: '/fixtures', 
+    params: { id: query.fixture },
   })
     .then(res => res.response[0])
     .catch(err => console.error({ err }))
 
-  return league
+  return fixture
 })

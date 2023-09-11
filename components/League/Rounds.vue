@@ -16,12 +16,12 @@
 </template>
 
 <script setup lang="ts">
-  import { LeagueRoundsT } from '~/types/league-rounds';
+  import { LeagueRoundsT } from '~/types/league/rounds';
 
   const props = defineProps<{ current: string | undefined }>()
 
   const { data: leagueRounds } = 
-    await useFetch<LeagueRoundsT>('/api/league-rounds')
+    await useFetch<LeagueRoundsT>('/api/league/rounds')
 
   onMounted(() => {
     const currentRoundElement = document
@@ -74,4 +74,3 @@
     }
   }
 </style>
-~/types/league-rounds

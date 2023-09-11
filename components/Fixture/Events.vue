@@ -52,13 +52,13 @@
 </template>
 
 <script setup lang="ts">
-  import { FixtureEventsT } from '~/types/fixture-events';
-  import { FixtureT } from '~/types/fixtures';
+  import { FixtureEventsT } from '~/types/fixture/events';
+  import { FixtureT } from '~/types/fixture';
 
   const props = defineProps<{ fixture: FixtureT | null }>()
 
   const { data: fixtureEvents } = await useFetch<FixtureEventsT>(
-    '/api/fixture-events', {
+    '/api/fixture/events', {
       params: { fixture: props.fixture?.fixture.id }
     }
   )

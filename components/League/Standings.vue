@@ -67,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-  import { LeagueStandingsT } from '~/types/league-standings';
+  import { LeagueStandingsT } from '~/types/league/standings';
 
   const props = defineProps<{ 
     leagueId: number
@@ -75,7 +75,7 @@
   }>()
 
   const { data: leagueStandings } = 
-    await useFetch<LeagueStandingsT>('/api/league-standings', {
+    await useFetch<LeagueStandingsT>('/api/league/standings', {
       params: { leagueId: props.leagueId, season: props.season }
     })
 
@@ -150,4 +150,3 @@
     }
   }
 </style>
-~/types/league-standings

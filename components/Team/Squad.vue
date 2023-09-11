@@ -46,11 +46,11 @@
 </template>
 
 <script setup lang="ts">
-  import { TeamsSquadT, ShortPositions } from '~/types/team-squad';
+  import { TeamsSquadT, ShortPositions } from '~/types/team/squad';
 
   const props = defineProps<{ teamId: number }>()
 
-  const { data: squad } = await useFetch<TeamsSquadT>('/api/team-squad', {
+  const { data: squad } = await useFetch<TeamsSquadT>('/api/team/squad', {
     params: { team: props.teamId }
   })
 </script>

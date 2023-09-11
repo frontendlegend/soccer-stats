@@ -35,7 +35,7 @@
       </div>
   
       <div class="search-leagues__variants__variant">
-        <CountrySearchSelect 
+        <HomeCountrySearchSelect 
           :selected-country="selectedCountry" 
           @on-select-country="country => selectedCountry = country"
         />
@@ -82,7 +82,7 @@
 
 <script setup lang="ts">
   import { CountryT } from '~/types/countries';
-  import { LeaguesT } from '~/types/leagues';
+  import { LeaguesT } from '~/types/league';
 
   const selectedCountry = ref<CountryT | null>(null)
   const leagueNameQuery = ref<string>('')

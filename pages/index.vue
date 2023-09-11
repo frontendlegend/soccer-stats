@@ -1,8 +1,8 @@
 <template>
   <NuxtLayout>
     <div class="home-page">
-      <FavoriteLeagues />
-      <SearchLeagues />
+      <CommonFavoriteLeagues />
+      <HomeSearchLeagues />
     </div>
   </NuxtLayout>
 </template>

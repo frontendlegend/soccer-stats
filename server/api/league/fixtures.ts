@@ -1,16 +1,16 @@
 import { ResponseWrapperT } from "~/types/api"
-import { FixtureLineupsT } from "~/types/fixture-lineups"
+import { FixturesT } from "~/types/fixture"
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)
 
-  const fixtureLineups = await soccerApi<ResponseWrapperT<FixtureLineupsT>>({
+  const leagueFixtures = await soccerApi<ResponseWrapperT<FixturesT>>({
     prodEnv: event.context.env,
-    path: '/fixtures/lineups',
-    params: { fixture: query.fixture },
+    path: '/fixtures', 
+    params: { league: query.leagueId, season: query.season, round: query.round },
   })
     .then(res => res.response)
     .catch(err => console.error({ err }))
-  
-  return fixtureLineups
+
+  return leagueFixtures
 })

@@ -1,5 +1,5 @@
 import { ResponseWrapperT } from "~/types/api"
-import { LeagueRoundsT } from "~/types/league-rounds"
+import { LeagueRoundsT } from "~/types/league/rounds"
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)

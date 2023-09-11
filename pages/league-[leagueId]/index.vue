@@ -1,8 +1,8 @@
 <template>
   <NuxtLayout>
     <div class="league-page">
-      <FavoriteLeagues />
-      <Seasons :seasons="leagueSeasons" :current="currentSeason" />
+      <CommonFavoriteLeagues />
+      <CommonSeasons :seasons="leagueSeasons" :current="currentSeason" />
 
       <div class="league-page__block">
         <LeagueFixtures :league-id="leagueId" :season="currentSeason" />
@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-  import { LeagueT } from '~/types/leagues';
+  import { LeagueT } from '~/types/league';
   import { SeasonsT } from '~/types/seasons';
 
   const route = useRoute()
@@ -27,7 +27,7 @@
   )
 
   const { data: leagueSeasons } = 
-    await useFetch<SeasonsT>('/api/league-seasons')
+    await useFetch<SeasonsT>('/api/league/seasons')
 </script>
 
 <style scoped lang="scss">

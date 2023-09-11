@@ -26,13 +26,13 @@
 </template>
 
 <script setup lang="ts">
-  import { FixtureStatisticsT } from '~/types/fixture-statistics';
-  import { FixtureT } from '~/types/fixtures';
+  import { FixtureStatisticsT } from '~/types/fixture/statistics';
+  import { FixtureT } from '~/types/fixture';
 
   const props = defineProps<{ fixture: FixtureT | null }>()
 
   const { data: fixtureStatistics } = 
-    await useFetch<FixtureStatisticsT>('/api/fixture-stats', {
+    await useFetch<FixtureStatisticsT>('/api/fixture/stats', {
       params: { fixture: props.fixture?.fixture.id }
     })
 </script>
